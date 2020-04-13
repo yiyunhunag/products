@@ -1,12 +1,19 @@
+import os
 #read
 products = []
-with open('products.csv', 'r', encoding='utf-8') as f:
-	for line in f:
-		if '商品,價格' in line:
-			continue
-		name, price = line.strip().split(',')
-		products.append([name, price])
-print(products)		
+if os.path.isfile('products.csv'):
+	print('ya!')
+	with open('products.csv', 'r', encoding='utf-8') as f:
+		for line in f:
+			if '商品,價格' in line:
+				continue
+				name, price = line.strip().split(',')
+				products.append([name, price])
+	print(products)		
+
+
+else:
+    print('no!')
 
 #input
 while True:
@@ -17,7 +24,7 @@ while True:
 	price = int(price)
 	p = [name, price]
 	products.append(p)
-print(products)
+print(products)    	
 
 #print
 for p in products:
